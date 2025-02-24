@@ -4,13 +4,13 @@ class FormulaError(Exception):
         self.message=message
 
     def __str__(self):
-        return f"Error: {self.message}"
+        return f"\n❌ Error: {self.message}"
 
 def take_input():
     # to run program until input as "quit"
     while True:
         # take input
-        inputs=input("Enter the Formula: ")
+        inputs=input("\n*** Formula must have two operand and one operator separated by spaces. *** \n*** Operator Must be + or - ***\n*** (For Example:1 + 1) *** \n\nEnter the Formula : ")
 
         input_to_check=inputs.lower()
         if input_to_check=="quit":
@@ -21,7 +21,7 @@ def take_input():
         try:
             # checking if length of input is 3
             if len(ls) > 3 or len(ls) < 3:
-                raise FormulaError("Enter only 3 element separated by spaces.")
+                raise FormulaError("\nFormula Error: Enter only 3 element separated by spaces.")
             
             # Converting string into float for 1st and 3rd element
             operator1=float(ls[0])
@@ -33,14 +33,15 @@ def take_input():
             elif ls[1]=='-':
                 ans=operator1-operator2
             else:
-                raise FormulaError("Operator must be + or -.")
+                raise FormulaError("\nFormula Error: Operator must be + or -.")
 
-            print(f"Answer of {ls[0]} {ls[1]} {ls[2]} is : {ans}")
+            print(f"\nAnswer of {ls[0]} {ls[1]} {ls[2]} is : {ans}")
 
         except ValueError as ve:
-            print(FormulaError(f"Enter Correct Input.{ve}"))
+            print(FormulaError(f"\nFormula Error: Enter Correct Input.{ve}"))
         except FormulaError as fe:
             print(fe)
 
 # Program starts from here
+print("\n👋 Welcome to Interactive Calculator. Here You can give formula and you will get output of it.")
 take_input()
