@@ -10,13 +10,27 @@ def take_input():
     # to run program until input as "quit"
     while True:
         # take input
-        inputs=input("\n*** Formula must have two operand and one operator separated by spaces. *** \n*** Operator Must be + or - ***\n*** (For Example:1 + 1) *** \n\nEnter the Formula : ")
+        inputs=input("\n*** Formula must have two operand and one operator separated by spaces. *** \n*** Operator Must be + or - or * or / ***\n*** (For Example:1 + 1) *** \n\nEnter the Formula : ")
 
         input_to_check=inputs.lower()
         if input_to_check=="quit":
             break
-
-        ls=inputs.split()
+        
+        ls=[]
+        symbols=['+','-','*','/']
+        temp=''
+        for i in inputs:
+            if i in symbols:
+                if temp:
+                    ls.append(temp)
+                    temp=''
+                if not(i == ' '):
+                    ls.append(i)
+            else:
+                temp+=i
+        if temp:
+            ls.append(temp)
+        # ls=inputs.split()
 
         try:
             # checking if length of input is 3
@@ -24,18 +38,22 @@ def take_input():
                 raise FormulaError("\nFormula Error: Enter only 3 element separated by spaces.")
             
             # Converting string into float for 1st and 3rd element
-            operator1=float(ls[0])
-            operator2=float(ls[2])
+            operand1=float(ls[0])
+            operand2=float(ls[2])
 
             # checking operator
             if ls[1]=='+':
-                ans=operator1+operator2
+                ans=operand1+operand2
             elif ls[1]=='-':
-                ans=operator1-operator2
+                ans=operand1-operand2
+            elif ls[1]=='*':
+                ans=operand1*operand2
+            elif ls[1]=='/':
+                ans=operand1/operand2
             else:
-                raise FormulaError("\nFormula Error: Operator must be + or -.")
+                raise FormulaError("\nFormula Error: Operator must be + or - or * or / .")
 
-            print(f"\nAnswer of {ls[0]} {ls[1]} {ls[2]} is : {ans}")
+            print(f"\nAnswer of {operand1} {ls[1]} {operand2} is : {ans}")
 
         except ValueError as ve:
             print(FormulaError(f"\nFormula Error: Enter Correct Input.{ve}"))
@@ -43,5 +61,5 @@ def take_input():
             print(fe)
 
 # Program starts from here
-print("\n👋 Welcome to Interactive Calculator. Here You can give formula and you will get output of it.")
+print("\n👋 Welcome. Here You can give formula and you will get output of it.")
 take_input()
