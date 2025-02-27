@@ -12,6 +12,8 @@ def list_of_vowel_words(input_string):
     print("\n\n***\n📄List with all Words that Starts with vowel:\n",result,"\n***\n")
 
 #Program starts from here
+print("You have to give words separated by spaces as input, In Output it will give all words that starts with vowel character.")
+
 while True:
     input_string=input("""\nFor Exit from Program enter 'exit'.\nOR \nFor Input Enter the Words separated by Spaces.\n\nEnter Your Input:""")
   
