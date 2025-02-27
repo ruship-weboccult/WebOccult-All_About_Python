@@ -1,3 +1,4 @@
+print("This program will get student data from you and give you detail about student who got more than 90 Grade.")
 while True:
     try:
         input_string=input("""\nFor Exit from Program enter 'exit'.\nOR \nFor Input Enter the Number of Students.\n\nEnter Your Input:""")
