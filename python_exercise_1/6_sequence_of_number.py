@@ -16,6 +16,7 @@ def func(str):
     except Exception as e:
         print("\n\n❌Error: ",e,"\n")
 
+print("This program will take Sequence of Number(Space Separated) as input and tell that all numbers are different from each other or not.")
 while True:
     input_string=input("""\nFor Exit from Program enter 'exit'.\nOR \nFor Input Enter the Enter the Sequence of Number(Space Separated).\n\nEnter Your Input:""")
     temp=input_string.lower()
