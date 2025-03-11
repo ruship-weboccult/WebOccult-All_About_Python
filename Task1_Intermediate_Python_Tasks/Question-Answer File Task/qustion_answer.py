@@ -4,19 +4,19 @@ def question_answer():
         answers = {}
 
         # For Question File
-        with open("./question.txt", 'r') as question_file:
+        with open("Task1_Intermediate_Python_Tasks/Question-Answer File Task/question.txt", 'r') as question_file:
             for line in question_file:
                 num, question = line.split('.', 1)
                 questions[int(num.strip())] = question.strip()
 
         # For Answer file
-        with open("./answer.txt", 'r') as answer_file:
+        with open("Task1_Intermediate_Python_Tasks/Question-Answer File Task/answer.txt", 'r') as answer_file:
             for line in answer_file:
                 num, answer = line.split('.', 1)
                 answers[int(num.strip())] = answer.strip()
 
         # For output file
-        with open("./Output.txt", 'w') as output_file:
+        with open("Task1_Intermediate_Python_Tasks/Question-Answer File Task/Output.txt", 'w') as output_file:
             for num in sorted(questions.keys()):
                 output_file.write(f"{num}. {questions[num]}\n")
                 
